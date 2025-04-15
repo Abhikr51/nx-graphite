@@ -1,7 +1,7 @@
-import { FlexLayout } from "@salt-ds/core";
-import useRefData from "../../hooks/useRefData";
-import GridHandlaer from "../../components/GridLayout";
 import { useState } from "react";
+import useRefData from "../../hooks/useRefData";
+import GridHandlaer from "../../components/ReferenceItemBox/GridLayout";
+import { SALTFlexLayout } from "../../components";
 
 const ReferenceData = () => {
   const { highCriticality, lowCriticality, mediumCriticality } = useRefData();
@@ -11,7 +11,7 @@ const ReferenceData = () => {
   };
 
   return (
-    <FlexLayout margin={2}>
+    <SALTFlexLayout margin={2}>
       <GridHandlaer
         active={active}
         handleActiveToggle={handleActiveToggle}
@@ -36,7 +36,7 @@ const ReferenceData = () => {
         rows={10}
         columns={1}
       />
-    </FlexLayout>
+    </SALTFlexLayout>
   );
 };
 

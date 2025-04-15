@@ -1,5 +1,7 @@
 import { GridItem, GridLayout, NavigationItem } from "@salt-ds/core";
 import GridItemText from "./GridItem";
+import "./GridLayout.css";
+
 interface GridItemTextProps {
   reference_table_name: string;
   is_favorite: boolean;
@@ -22,15 +24,9 @@ const GridHandlaer = ({
   columns?: number;
 }) => {
   return (
-    <GridItem
-      style={{
-        padding: "8px",
-        border: "2px solid rgba(0, 0, 0, 0.4)",
-        borderRadius: "4px",
-      }}
-    >
+    <GridItem className="GridBox">
       <NavigationItem
-        href="/home"
+        // href="/graphit"
         active={active}
         orientation="vertical"
         onClick={() => {
