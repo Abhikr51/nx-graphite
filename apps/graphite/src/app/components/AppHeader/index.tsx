@@ -4,54 +4,40 @@ import {
   Text,
   StackLayout,
   NavigationItem,
-} from '@salt-ds/core';
-import { NotificationIcon } from '@salt-ds/icons';
-import { UserBadgeIcon } from '@salt-ds/icons';
-import { VisibleIcon } from '@salt-ds/icons';
+} from "@salt-ds/core";
 
-import './appHeaderStyle.css';
-import { routes } from '../../constants/routes';
-
-const appHeaderConstants = ['J.P Morgan', '|', 'Graphite'];
-const appHeaderFeatures = [
-  {
-    feature: 'Request center',
-    icon: <NotificationIcon size={1.3} className="appHeader-icon-class" />,
-  },
-  {
-    feature: 'Demo Center',
-    icon: <UserBadgeIcon size={1.3} className="appHeader-icon-class" />,
-  },
-  {
-    feature: 'Martin',
-    icon: <VisibleIcon size={1.3} className="appHeader-icon-class" />,
-  },
-];
+import "./appHeaderStyle.css";
+import { routes } from "../../constants/routes";
+import { appHeaderConstants, appHeaderFeatures } from "../../constants";
 
 const AppHeader = () => {
+  const currentURL = window.location.href;
 
   return (
     <header className="appHeader-container">
+      {/* Top Section: Header Text + Features */}
       <FlexLayout justify="space-between">
+        {/* Left: Header Titles */}
         <StackLayout>
           <FlexLayout>
-            {appHeaderConstants.map((item, index) => (
-              <FlexItem key={index}>
+            {appHeaderConstants.map((label, index) => (
+              <FlexItem key={`header-title-${index}`}>
                 <Text as="h3" className="appHeader-text-class">
-                  {item}
+                  {label}
                 </Text>
               </FlexItem>
             ))}
           </FlexLayout>
         </StackLayout>
 
+        {/* Right: Feature Icons and Text */}
         <StackLayout>
           <FlexLayout>
-            {appHeaderFeatures.map((item, index) => (
-              <FlexItem key={index}>
+            {appHeaderFeatures.map(({ icon, feature }, index) => (
+              <FlexItem key={`header-feature-${index}`}>
                 <Text as="h4" className="appHeader-text-class">
-                  {item?.icon}
-                  {item?.feature}
+                  {icon}
+                  {feature}
                 </Text>
               </FlexItem>
             ))}
@@ -59,13 +45,17 @@ const AppHeader = () => {
         </StackLayout>
       </FlexLayout>
 
-      {/* Tabs */}
+      {/* Bottom Section: Navigation Tabs */}
       <StackLayout className="appHeader-tab-container">
         <FlexLayout>
-          {routes.map((item: any) => (
-            <FlexItem>
-              <NavigationItem href={item?.url} className="appHeader-text-class" active={item?.url === `http://localhost:4200${window.location.pathname}` } >
-                {item?.title}
+          {routes.map(({ id, url, title }) => (
+            <FlexItem key={`route-${id}`}>
+              <NavigationItem
+                href={url}
+                className="appHeader-text-class"
+                active={currentURL === url}
+              >
+                {title}
               </NavigationItem>
             </FlexItem>
           ))}
@@ -74,4 +64,6 @@ const AppHeader = () => {
     </header>
   );
 };
+
 export default AppHeader;
+
