@@ -11,6 +11,7 @@ export function App() {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/graphite">Graphite</Link></li>
       </ul>
+      
       <Routes>
         <Route path="/" element={<NxWelcome title="@photon/jpmc"/>} />
         <Route path="/graphite" element={<Graphite/>} />
