@@ -1,11 +1,13 @@
 import '../styles.css';
-
+import apiInitializer from './api/apiInitializer';
+import ReferenceData from './pages/ReferenceData';
+apiInitializer();
 export function App() {
   return (
-    <div>
-     
-    </div>
-  );
+    <>
+      <ReferenceData />
+    </>
+  )
 }
 
 export default App;
