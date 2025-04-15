@@ -1,13 +1,12 @@
 import '../styles.css';
-import apiInitializer from './api/apiInitializer';
-import ReferenceData from './pages/ReferenceData';
-apiInitializer();
+import AppHeader from './components/appHeader';
+
 export function App() {
   return (
-    <>
-      <ReferenceData />
-    </>
-  )
+    <div>
+     <AppHeader/>
+    </div>
+  );
 }
 
 export default App;
