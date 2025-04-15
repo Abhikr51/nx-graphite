@@ -12,7 +12,7 @@
     <>
     <ul>
         <li><Link to="/">Home</Link></li>
-        <li><Link to="/graphite">Graphite</Link></li>
+        <li><Link to="/graphite/data-processing">Graphite</Link></li>
       </ul>
       <style
         dangerouslySetInnerHTML={{

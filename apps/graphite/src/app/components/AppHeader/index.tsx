@@ -10,7 +10,7 @@ import { UserBadgeIcon } from '@salt-ds/icons';
 import { VisibleIcon } from '@salt-ds/icons';
 
 import './appHeaderStyle.css';
-import { routes } from '../Routes';
+import { routes } from '../../constants/routes';
 
 const appHeaderConstants = ['J.P Morgan', '|', 'Graphite'];
 const appHeaderFeatures = [
