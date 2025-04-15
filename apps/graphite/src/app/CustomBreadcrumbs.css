@@ -1,0 +1,21 @@
+.breadcrumbs-wrapper {
+  font-size: 14px;
+  color: #5a5a5a;
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.crumb {
+  color: #5a5a5a;
+  cursor: pointer;
+}
+
+.crumb:hover {
+  text-decoration: underline;
+}
+
+.crumb-separator {
+  margin: 0 6px;
+  color: #999;
+}

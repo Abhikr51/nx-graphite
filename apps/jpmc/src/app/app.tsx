@@ -13,7 +13,7 @@ export function App() {
       </ul>
       <Routes>
         <Route path="/" element={<NxWelcome title="@photon/jpmc"/>} />
-        <Route path="/graphite" element={<Graphite/>} />
+        <Route path="/graphite/*" element={<Graphite/>} />
       </Routes>
     </React.Suspense>
   );

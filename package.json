@@ -11,6 +11,7 @@
     "@react-router/serve": "^7.2.0",
     "@salt-ds/core": "^1.44.0",
     "@salt-ds/icons": "^1.13.2",
+    "@salt-ds/lab": "^1.0.0-alpha.65",
     "@salt-ds/theme": "^1.28.1",
     "isbot": "^4.4.0",
     "react": "19.0.0",
