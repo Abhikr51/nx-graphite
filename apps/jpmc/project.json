@@ -1,0 +1,104 @@
+{
+  "name": "@photon/jpmc",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/jpmc/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/rspack:rspack",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "apps/jpmc/dist",
+        "index": "apps/jpmc/src/index.html",
+        "baseHref": "/",
+        "main": "apps/jpmc/src/main.ts",
+        "tsConfig": "apps/jpmc/tsconfig.app.json",
+        "assets": [
+          "apps/jpmc/src/favicon.ico",
+          "apps/jpmc/src/assets"
+        ],
+        "rspackConfig": "apps/jpmc/rspack.config.ts",
+        "styles": [
+          "apps/jpmc/src/styles.tailwind"
+        ],
+        "scripts": [],
+        "configurations": {
+          "development": {
+            "mode": "development"
+          },
+          "production": {
+            "mode": "production",
+            "optimization": true,
+            "sourceMap": false,
+            "outputHashing": "all",
+            "namedChunks": false,
+            "extractLicenses": true,
+            "vendorChunk": false
+          }
+        },
+        "target": "web"
+      },
+      "configurations": {
+        "production": {
+          "rspackConfig": "apps/jpmc/rspack.config.prod.ts"
+        }
+      },
+      "dependsOn": [
+        "^build",
+        "typecheck"
+      ]
+    },
+    "serve": {
+      "executor": "@nx/rspack:module-federation-dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "@photon/jpmc:build",
+        "hmr": true,
+        "port": 4200
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "@photon/jpmc:build:development"
+        },
+        "production": {
+          "buildTarget": "@photon/jpmc:build:production",
+          "hmr": false
+        }
+      },
+      "dependsOn": [
+        "typecheck"
+      ]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "executor": "@nx/rspack:module-federation-static-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "serveTarget": "@photon/jpmc:serve"
+      },
+      "configurations": {
+        "development": {
+          "serveTarget": "@photon/jpmc:serve:development"
+        },
+        "production": {
+          "serveTarget": "@photon/jpmc:serve:production"
+        }
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{projectRoot}/test-output/jest/coverage"
+      ],
+      "options": {
+        "jestConfig": "apps/jpmc/jest.config.ts"
+      }
+    }
+  }
+}

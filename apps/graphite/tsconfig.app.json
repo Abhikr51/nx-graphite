@@ -35,10 +35,5 @@
     "src/**/*.jsx",
     "src/**/*.ts",
     "src/**/*.tsx"
-  ],
-  "references": [
-    {
-      "path": "../graphite/tsconfig.app.json"
-    }
   ]
 }
