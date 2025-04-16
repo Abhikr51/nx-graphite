@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from 'react';
 import NxWelcome from "./nx-welcome";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom';
 
-const Graphite = React.lazy(() => import("graphite/Module"));
+const Graphite = React.lazy(() => import('graphite/Module'));
 
 export function App() {
   return (
@@ -11,10 +11,11 @@ export function App() {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/graphite">Graphite</Link></li>
       </ul> */}
-
+      
       <Routes>
-        <Route path="/" element={<NxWelcome title="@photon/jpmc" />} />
-        <Route path="graphite/*" element={<Graphite />} />
+        <Route path="/" element={<NxWelcome title="@photon/jpmc"/>} />
+        <Route path="graphite/data-processing" element={<Graphite/>} />
+        <Route path="graphite/*" element={<NxWelcome title="@photon/jpmc"/>} />
       </Routes>
     </React.Suspense>
   );

@@ -15,7 +15,7 @@ const AgGridTableAdapter = <T,>({
   const gridRef = useRef<AgGridReact>(null);
 
   return (
-    <div className="ag-theme-quartz" style={{ height: "400px", width: "100%", overflowY:"scroll" }}>
+    <div className="ag-theme-quartz" style={{ height: "600px", width: "100%" }}>
       <AgGridReact
         ref={gridRef}
         columnDefs={columnDefs}
