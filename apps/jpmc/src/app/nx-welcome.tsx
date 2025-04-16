@@ -5,15 +5,9 @@
  Delete this file and get started with your project!
  * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  */
-
- import { Link} from 'react-router-dom';
  export function NxWelcome({ title }: { title: string }) {
   return (
     <>
-    <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/graphite/data-processing">Graphite</Link></li>
-      </ul>
       <style
         dangerouslySetInnerHTML={{
           __html: `
