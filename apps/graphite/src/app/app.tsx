@@ -5,6 +5,7 @@ import ReferenceData from "./pages/ReferenceData";
 import TabRouter from './TabRouter';
 import apiInitializer from "./api/apiInitializer";
 apiInitializer()
+
 export function App() {
   return (
     <div>
