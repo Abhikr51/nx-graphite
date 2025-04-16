@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import ReferenceData from "../../pages/ReferenceData";
 
 type FilteredComponentProps = {
   filter: string;
@@ -27,13 +28,15 @@ const FilteredComponent: React.FC<FilteredComponentProps> = ({ filter, checkboxV
 
   return (
     <div>
-      <h3>{`Filtered Data for: ${filter} (${checkboxValue})`}</h3>
+      {/* <h3>{`Filtered Data for: ${filter} (${checkboxValue})`}</h3>
       {filteredData.map((item, index) => (
         <div key={index}>
           <h4>{item.label}</h4>
           <p>{item.data}</p>
         </div>
-      ))}
+      ))} */}
+      <ReferenceData />
+      
     </div>
   );
 };
