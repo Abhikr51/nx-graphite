@@ -2,6 +2,9 @@
     background-color: var(--salt-color-cobalt-900);
     width: 100%;
     padding:1rem 2rem 0rem 1rem;
+    position: sticky;
+    top: 0px;
+    z-index: 9999;
 }
 
 
