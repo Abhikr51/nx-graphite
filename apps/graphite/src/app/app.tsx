@@ -2,8 +2,9 @@ import "../styles.css";
 import AppHeader from "./components/AppHeader";
 // import DashBoardTable from "./components/DashBoardTable";
 import ReferenceData from "./pages/ReferenceData";
-import TabRouter from './TabRouter';
 import apiInitializer from "./api/apiInitializer";
+import ReferenceDataPage from "./components/ReferencetabsInfo/ReferenceDataPage";
+
 apiInitializer()
 
 export function App() {
@@ -11,7 +12,7 @@ export function App() {
     <div>
       <AppHeader />
       {/* <DashBoardTable /> */}
-      <TabRouter />
+      <ReferenceDataPage />
       <ReferenceData />
     </div>
   );
