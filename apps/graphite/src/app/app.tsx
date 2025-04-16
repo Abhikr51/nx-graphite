@@ -1,17 +1,19 @@
-import '../styles.css';
-import { Button, Card } from "@salt-ds/core";
+import "../styles.css";
+import AppHeader from "./components/AppHeader";
+// import DashBoardTable from "./components/DashBoardTable";
+import ReferenceData from "./pages/ReferenceData";
 import TabRouter from './TabRouter';
-
+import apiInitializer from "./api/apiInitializer";
+apiInitializer()
 export function App() {
   return (
     <div>
-      <Button sentiment="accented" appearance="solid">Click me</Button>
-      <Card style={{ width: "260px", height: "144px" }} />
+      <AppHeader />
+      {/* <DashBoardTable /> */}
       <TabRouter />
+      <ReferenceData />
     </div>
   );
 }
 
 export default App;
-
-
