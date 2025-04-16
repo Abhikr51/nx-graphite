@@ -1,3 +1,3 @@
 export default {
-    REF_DATA_URL : "/reference-tables"
+    REF_DATA_URL : "http://localhost:3000/api/reference-tables"
 }
