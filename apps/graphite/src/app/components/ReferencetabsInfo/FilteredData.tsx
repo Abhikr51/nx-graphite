@@ -1,7 +1,5 @@
 import React, { useMemo } from "react";
 import ReferenceData from "../../pages/ReferenceData";
-import useRefData from "../../hooks/useRefData";
-
 
 type FilteredComponentProps = {
   filter: string;
@@ -19,7 +17,6 @@ const mockData = [
 ];
 
 const FilteredComponent: React.FC<FilteredComponentProps> = ({ filter, checkboxValue, setNotifications }) => {
-  const apiData = useRefData();
   const filteredData = useMemo(() => {
     return mockData.filter(
       (item) => item.value === filter && (!checkboxValue || item.type === checkboxValue)
@@ -32,7 +29,7 @@ const FilteredComponent: React.FC<FilteredComponentProps> = ({ filter, checkboxV
 
   return (
     <div>
-      <ReferenceData filter={filter} setNotifications={setNotifications} apiData={[apiData]}/>
+      <ReferenceData filter={filter} setNotifications={setNotifications}/>
     </div>
   );
 };
