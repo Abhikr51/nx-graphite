@@ -1,9 +1,10 @@
 import React, { useMemo } from "react";
-import ReferenceData from "../../pages/ReferenceData";
+import ReferenceData from "../../../pages/ReferenceData";
 
 type FilteredComponentProps = {
   filter: string;
   checkboxValue: string;
+  setNotifications: any
 };
 
 const mockData = [

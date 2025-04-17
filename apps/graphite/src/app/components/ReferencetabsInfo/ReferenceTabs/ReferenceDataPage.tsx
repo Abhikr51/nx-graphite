@@ -1,5 +1,6 @@
-import React, { useEffect, useState, useCallback } from "react";
-import { Badge, Checkbox, Panel, StackLayout } from "@salt-ds/core";
+import React, { useState, useCallback } from "react";
+import { Badge, Checkbox, Panel , StackLayout} from "@salt-ds/core";
+import "./ReferenceDataPage.css";
 import {
   TabBar,
   TabListNext,
@@ -8,13 +9,12 @@ import {
   TabsNext,
 } from "@salt-ds/lab";
 import FilteredComponent from "./FilteredData";
-import Breadcrumbs from "./Breadcrumbs";
 import "./ReferenceDataPage.css";
 
 const tabs = [
-  { label: "All tables", value: "all", component: "All tables" },
-  { label: "Favorite tables", value: "favorite", component: "Favorite tables" },
-  { label: "Most common", value: "common", component: "Most common" },
+  { label: "All tables", value: "all", },
+  { label: "Favorite tables", value: "favorite", },
+  { label: "Most common", value: "common", },
 ];
 
 const checkboxConfig = [
@@ -22,24 +22,7 @@ const checkboxConfig = [
   { type: "nonEditable", label: "Non-Editable", notificationKey: "10" },
 ];
 
-// const fetchDynamicNotifications = (): Promise<Record<string, number>> => {
-//   return new Promise((resolve) => {
-//     setTimeout(() => {
-//       resolve({
-//         "All tables": 2,
-//         "Favorite tables": 4,
-//         "Most common": 6,
-//       });
-//     }, 1000);
-//   });
-// };
-
 const ReferenceDataPage: React.FC = () => {
-  const [breadcrumbs, setBreadcrumbs] = useState([
-    "Overview",
-    "Reference data tables",
-  ]);
-  const [pageTitle, setPageTitle] = useState("Reference data tables");
   const [notifications, setNotifications] = useState<Record<string, number>>({
     "All tables": 0,
     "Favorite tables": 0,
@@ -49,39 +32,16 @@ const ReferenceDataPage: React.FC = () => {
   const [selectedCheckbox, setSelectedCheckbox] = useState<string>("");
   const [tabContent, setTabContent] = useState(tabs[0]); // Default to first tab
 
-  // useEffect(() => {
-  //   fetchDynamicNotifications().then((data) => setNotifications(data));
-  // }, []);
-
-  const handleBreadcrumbClick = useCallback(
-    (item: string, index: number) => {
-      const newCrumbs = breadcrumbs.slice(0, index + 1);
-      setBreadcrumbs(newCrumbs);
-      setPageTitle(item);
-    },
-    [breadcrumbs]
-  );
-
   const handleTabClick = useCallback((tab: typeof tabs[0]) => {
     setTabContent(tab);
-    setPageTitle(tab.label);
-    setBreadcrumbs(["Overview", "Reference data tables"]);
   }, []);
 
   const handleCheckboxChange = useCallback((type: string) => {
     setSelectedCheckbox((prev) => (prev === type ? "" : type));
   }, []);
 
-  // const filteredNotifications = useMemo(() => {
-  //   return notifications[tabContent.label] || 0;
-  // }, [notifications, tabContent.label]);
-
   return (
     <Panel>
-      <Breadcrumbs items={breadcrumbs} onItemClick={handleBreadcrumbClick} />
-      <Panel>
-        <h2 className="page-title">{pageTitle}</h2>
-      </Panel>
       <StackLayout>
         <TabsNext defaultValue={tabContent.value}>
           <TabBar divider={true} inset={true}>
@@ -119,6 +79,7 @@ const ReferenceDataPage: React.FC = () => {
             <FilteredComponent
               filter={tabContent.value}
               checkboxValue={selectedCheckbox}
+              setNotifications={setNotifications}
             />
           </Panel>
         </TabsNext>

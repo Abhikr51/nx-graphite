@@ -55,6 +55,12 @@
   gap: 1rem;
   margin-top: 0.5rem;
   margin-right: 2rem;
-   margin-bottom: -3rem;
+  margin-bottom: -3rem;
+}
 
+.checkbox-container .saltCheckboxIcon {
+  border: 1px solid var(--salt-color-smoke-400) !important;
+  /* Gray border color */
+  border-radius: 1px !important;
+  /* Slightly curved borders */
 }

@@ -1,17 +1,20 @@
+import { Provider } from 'react-redux';
 import '../styles.css';
+import apiInitializer from './api/apiInitializer';
 import AppHeader from "./components/AppHeader";
-import apiInitializer from "./api/apiInitializer";
-import ReferenceDataPage from "./components/ReferencetabsInfo/ReferenceDataPage";
+import { store } from './store';
+apiInitializer();
+import BreadcrumbEntry from './components/ReferencetabsInfo/BreadCrumbs';
 
 apiInitializer()
 
 export function App() {
   return (
-    <div>
+    <Provider store={store}>
       <AppHeader />
-      <ReferenceDataPage />
-    </div>
-  );
+      <BreadcrumbEntry />
+    </Provider>
+  )
 }
 
 export default App;
