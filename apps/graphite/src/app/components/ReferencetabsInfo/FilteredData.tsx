@@ -28,15 +28,7 @@ const FilteredComponent: React.FC<FilteredComponentProps> = ({ filter, checkboxV
 
   return (
     <div>
-      {/* <h3>{`Filtered Data for: ${filter} (${checkboxValue})`}</h3>
-      {filteredData.map((item, index) => (
-        <div key={index}>
-          <h4>{item.label}</h4>
-          <p>{item.data}</p>
-        </div>
-      ))} */}
       <ReferenceData />
-      
     </div>
   );
 };

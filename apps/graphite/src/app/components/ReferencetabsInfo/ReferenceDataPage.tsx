@@ -23,17 +23,17 @@ const checkboxConfig = [
   { type: "nonEditable", label: "Non-Editable", notificationKey: "10" },
 ];
 
-const fetchDynamicNotifications = (): Promise<Record<string, number>> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        "All tables": 2,
-        "Favorite tables": 4,
-        "Most common": 6,
-      });
-    }, 1000);
-  });
-};
+// const fetchDynamicNotifications = (): Promise<Record<string, number>> => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve({
+//         "All tables": 2,
+//         "Favorite tables": 4,
+//         "Most common": 6,
+//       });
+//     }, 1000);
+//   });
+// };
 
 const ReferenceDataPage: React.FC = () => {
   const [breadcrumbs, setBreadcrumbs] = useState([
@@ -50,9 +50,9 @@ const ReferenceDataPage: React.FC = () => {
   const [selectedCheckbox, setSelectedCheckbox] = useState<string>("");
   const [tabContent, setTabContent] = useState(tabs[0]); // Default to first tab
 
-  useEffect(() => {
-    fetchDynamicNotifications().then((data) => setNotifications(data));
-  }, []);
+  // useEffect(() => {
+  //   fetchDynamicNotifications().then((data) => setNotifications(data));
+  // }, []);
 
   const handleBreadcrumbClick = useCallback((item: string, index: number) => {
     const newCrumbs = breadcrumbs.slice(0, index + 1);
