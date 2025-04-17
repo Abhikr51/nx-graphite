@@ -1,0 +1,67 @@
+.global-timebar-container {
+    background-color: #001f3f;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  .icon-settings {
+    color: #ffffff;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin-right: 12px;
+  }
+
+  .icon-chevron {
+    color: #ffffff;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .icon-chevron-left {
+    margin-right: 8px;
+  }
+
+  .icon-chevron-right {
+    margin-left: 8px;
+  }
+
+  .scroll-container {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex: 1;
+  }
+
+  .timezone-item {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    color: white;
+    white-space: nowrap;
+  }
+
+  .city-name {
+    color: white;
+    font-weight: bold;
+  }
+
+  .city-time {
+    color: red;
+  }
+
+  .divider-style {
+    margin: 0 12px;
+    height: 24px;
+    align-self: center;
+    background-color: #ffffff;
+  }
+
+  .drawer-content {
+    width: 300px;
+    padding: 16px;
+  }
+

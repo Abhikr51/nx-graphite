@@ -5,6 +5,7 @@ import useApiRequest from "./useApiRequest";
 //pass default object
 // ✅ Specific API Methods
 
+
 const Api = {
   get : <T = unknown>(url: string,apiName:string, configs?: ApiRequestConfig) =>
     useApiRequest<T>("get", url, apiName , undefined, configs),
