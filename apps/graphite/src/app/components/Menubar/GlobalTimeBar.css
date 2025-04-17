@@ -1,33 +1,33 @@
 .global-timebar-container {
-    background-color: #001f3f;
+  background-color: var(--salt-color-teal-900);
     padding: 8px 16px;
     display: flex;
     align-items: center;
   }
-
+  
   .icon-settings {
     color: #ffffff;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
     margin-right: 12px;
   }
-
+  
   .icon-chevron {
     color: #ffffff;
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
   }
-
+  
   .icon-chevron-left {
     margin-right: 8px;
   }
-
+  
   .icon-chevron-right {
     margin-left: 8px;
   }
-
+  
   .scroll-container {
     display: flex;
     gap: 16px;
@@ -35,7 +35,7 @@
     scrollbar-width: none;
     flex: 1;
   }
-
+  
   .timezone-item {
     display: flex;
     gap: 4px;
@@ -43,25 +43,32 @@
     color: white;
     white-space: nowrap;
   }
-
+  
   .city-name {
     color: white;
     font-weight: bold;
   }
-
+  
   .city-time {
     color: red;
   }
-
+  
   .divider-style {
     margin: 0 12px;
     height: 24px;
     align-self: center;
-    background-color: #ffffff;
+    background-color: #ffffff;; /* Use Salt Design neutral color for white */
   }
+  
 
-  .drawer-content {
-    width: 300px;
-    padding: 16px;
+  .pink-time {
+    color: var(--salt-color-red-20); /* Replace with the appropriate Salt Design pink color */
   }
-
+  
+  .yellow-time {
+    color: var(--salt-color-orange-30); /* Replace with the appropriate Salt Design yellow color */
+  }
+  
+  .green-time {
+    color: var(--salt-color-green-40); /* Replace with the appropriate Salt Design green color */
+  }
