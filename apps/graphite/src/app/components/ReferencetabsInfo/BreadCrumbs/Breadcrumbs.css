@@ -1,0 +1,27 @@
+.breadcrumb-separator {
+  font-size: 15px;
+  color: var(--salt-color-smoke-400) !important;
+  margin: 0px -1.5rem 1.5rem -1.5rem !important
+}
+
+.breadcrumb-container {
+  margin-top: 20px;
+  /* Top margin using external stylesheet */
+  margin-left: 20px;
+  /* Left margin using external stylesheet */
+}
+
+.breadcrumb-link {
+  color: var(--salt-color-smoke-400) !important;
+  ;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-current {
+  color: var(--salt-color-smoke-400);
+}

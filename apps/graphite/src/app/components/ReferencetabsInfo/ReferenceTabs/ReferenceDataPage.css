@@ -1,0 +1,66 @@
+.page {
+  padding: 24px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f7f7f7;
+  min-height: 100vh;
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #2a2a2a;
+}
+
+.tabs-toggle {
+  display: flex;
+  background-color: #e0e0e0;
+  padding: 4px;
+  border-radius: 20px;
+  width: fit-content;
+  margin-bottom: 20px;
+}
+
+.tab-toggle-item {
+  padding: 6px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+}
+
+.tab-toggle-item.active {
+  background-color: white;
+  color: #000;
+  font-weight: 500;
+}
+
+
+.saltTabNext.saltTabNext-selected::after {
+  background-color: rgb(21, 92, 147);
+  /* If applicable */
+}
+
+
+/* ReferenceDataPage.css */
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.checkbox-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  margin-right: 2rem;
+  margin-bottom: -3rem;
+}
+
+.checkbox-container .saltCheckboxIcon {
+  border: 1px solid var(--salt-color-smoke-400) !important;
+  /* Gray border color */
+  border-radius: 1px !important;
+  /* Slightly curved borders */
+}

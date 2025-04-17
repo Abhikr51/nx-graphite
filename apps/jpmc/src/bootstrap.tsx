@@ -1,4 +1,4 @@
-import { StrictMode } from 'react';import * as ReactDOM from 'react-dom/client';
+import * as ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';import App from './app/app';
 import { SaltProvider } from '@salt-ds/core';
 import "@salt-ds/theme/index.css";
@@ -17,12 +17,9 @@ import "@fontsource/open-sans/800-italic.css";
 import "@fontsource/pt-mono";
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-  <StrictMode>
     <BrowserRouter>
     <SaltProvider>
       <App/>
       </SaltProvider>
     </BrowserRouter>
-    
-  </StrictMode>
 )

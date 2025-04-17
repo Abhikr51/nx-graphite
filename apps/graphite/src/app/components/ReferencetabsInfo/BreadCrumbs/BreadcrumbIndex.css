@@ -1,0 +1,27 @@
+.breadcrumb-entry-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* Spacing between sections */
+  margin-left: 1rem;
+  color: var(--salt-color-smoke-400);
+}
+
+.breadcrumb-header {
+  font-size: 20px;
+  margin-top: 2px;
+  /* Add spacing below the breadcrumb */
+  font-weight: 500;
+  /* Make the header text bold */
+  color: var(--salt-color-smoke-800);
+  margin-bottom: -2rem;
+  margin-left: 1.5rem;
+}
+
+.breadcrumb-content-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 16px;
+  /* Add spacing below the header */
+}

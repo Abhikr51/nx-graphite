@@ -1,14 +1,20 @@
+import { Provider } from 'react-redux';
 import '../styles.css';
-import { Button, Card } from "@salt-ds/core";
+import apiInitializer from './api/apiInitializer';
+import AppHeader from "./components/AppHeader";
+import { store } from './store';
+apiInitializer();
+import BreadcrumbEntry from './components/ReferencetabsInfo/BreadCrumbs';
+
+apiInitializer()
+
 export function App() {
   return (
-    <div>
-      <Button sentiment="accented" appearance="solid">Click me</Button>
-      <Card style={{ width: "260px", height: "144px" }} />
-    </div>
-  );
+    <Provider store={store}>
+      <AppHeader />
+      <BreadcrumbEntry />
+    </Provider>
+  )
 }
 
 export default App;
-
-
