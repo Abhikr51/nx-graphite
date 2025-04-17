@@ -49,15 +49,12 @@
   align-items: stretch;
 }
 
-.checkbox-section {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 1rem;
-  margin-right: 2rem;
-  margin-bottom: 1rem;
-}
-
 .checkbox-container {
   display: flex;
+  justify-content: flex-end;
   gap: 1rem;
+  margin-top: 0.5rem;
+  margin-right: 2rem;
+   margin-bottom: -3rem;
+
 }

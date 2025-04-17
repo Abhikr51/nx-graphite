@@ -1,7 +1,5 @@
-import React, { useEffect, useState, useMemo, useCallback } from "react";
-import { Badge, Checkbox, Panel } from "@salt-ds/core";
-import "./ReferenceDataPage.css";
-import { StackLayout } from "@salt-ds/core";
+import React, { useEffect, useState, useCallback } from "react";
+import { Badge, Checkbox, Panel, StackLayout } from "@salt-ds/core";
 import {
   TabBar,
   TabListNext,
@@ -11,6 +9,7 @@ import {
 } from "@salt-ds/lab";
 import FilteredComponent from "./FilteredData";
 import Breadcrumbs from "./Breadcrumbs";
+import "./ReferenceDataPage.css";
 
 const tabs = [
   { label: "All tables", value: "all", component: "All tables" },
@@ -54,11 +53,14 @@ const ReferenceDataPage: React.FC = () => {
   //   fetchDynamicNotifications().then((data) => setNotifications(data));
   // }, []);
 
-  const handleBreadcrumbClick = useCallback((item: string, index: number) => {
-    const newCrumbs = breadcrumbs.slice(0, index + 1);
-    setBreadcrumbs(newCrumbs);
-    setPageTitle(item);
-  }, [breadcrumbs]);
+  const handleBreadcrumbClick = useCallback(
+    (item: string, index: number) => {
+      const newCrumbs = breadcrumbs.slice(0, index + 1);
+      setBreadcrumbs(newCrumbs);
+      setPageTitle(item);
+    },
+    [breadcrumbs]
+  );
 
   const handleTabClick = useCallback((tab: typeof tabs[0]) => {
     setTabContent(tab);
@@ -70,14 +72,16 @@ const ReferenceDataPage: React.FC = () => {
     setSelectedCheckbox((prev) => (prev === type ? "" : type));
   }, []);
 
-  const filteredNotifications = useMemo(() => {
-    return notifications[tabContent.label] || 0;
-  }, [notifications, tabContent.label]);
+  // const filteredNotifications = useMemo(() => {
+  //   return notifications[tabContent.label] || 0;
+  // }, [notifications, tabContent.label]);
 
   return (
-    <div className="page">
+    <Panel>
       <Breadcrumbs items={breadcrumbs} onItemClick={handleBreadcrumbClick} />
-      <h2 className="page-title">{pageTitle}</h2>
+      <Panel>
+        <h2 className="page-title">{pageTitle}</h2>
+      </Panel>
       <StackLayout>
         <TabsNext defaultValue={tabContent.value}>
           <TabBar divider={true} inset={true}>
@@ -90,10 +94,10 @@ const ReferenceDataPage: React.FC = () => {
                 >
                   <TabNextTrigger>
                     {tab.label}
-                    {filteredNotifications > 0 && (
+                    {notifications[tab.label] > 0 && (
                       <Badge
-                        value={filteredNotifications}
-                        aria-label={`${filteredNotifications} updates`}
+                        value={notifications[tab.label]}
+                        aria-label={`${notifications[tab.label]} updates`}
                       />
                     )}
                   </TabNextTrigger>
@@ -101,18 +105,16 @@ const ReferenceDataPage: React.FC = () => {
               ))}
             </TabListNext>
           </TabBar>
-          <div className="checkbox-section">
-            <div className="checkbox-container">
-              {checkboxConfig.map(({ type, label, notificationKey }) => (
-                <Checkbox
-                  key={type}
-                  label={`${label} (${notificationKey})`}
-                  checked={selectedCheckbox === type}
-                  onChange={() => handleCheckboxChange(type)}
-                />
-              ))}
-            </div>
-          </div>
+          <Panel className="checkbox-container">
+            {checkboxConfig.map(({ type, label, notificationKey }) => (
+              <Checkbox
+                key={type}
+                label={`${label} (${notificationKey})`}
+                checked={selectedCheckbox === type}
+                onChange={() => handleCheckboxChange(type)}
+              />
+            ))}
+          </Panel>
           <Panel>
             <FilteredComponent
               filter={tabContent.value}
@@ -121,7 +123,7 @@ const ReferenceDataPage: React.FC = () => {
           </Panel>
         </TabsNext>
       </StackLayout>
-    </div>
+    </Panel>
   );
 };
 
