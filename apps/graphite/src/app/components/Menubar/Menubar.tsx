@@ -50,7 +50,7 @@ import {
   
           <div ref={scrollRef} className="scroll-container">
             {timeZones.map(({ city, time, est }, index) => (
-              <div key={city} className="timezone-item">
+              <div key={city + index} className="timezone-item">
                 <Text styleAs="label" className="city-name">{city}</Text>
                 <Text styleAs="label">↕</Text>
                 <Text styleAs="label" className="city-time">{time} {est}</Text>

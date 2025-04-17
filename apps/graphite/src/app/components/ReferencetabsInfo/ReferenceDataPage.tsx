@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import { Badge, Checkbox, Panel } from "@salt-ds/core";
 import "./ReferenceDataPage.css";
 import { StackLayout } from "@salt-ds/core";
@@ -41,7 +41,7 @@ const ReferenceDataPage: React.FC = () => {
     "Reference data tables",
   ]);
   const [pageTitle, setPageTitle] = useState("Reference data tables");
-  const [notifications, setNotifications] = useState<Record<string, number>>({
+  const [notifications] = useState<Record<string, number>>({
     "All tables": 0,
     "Favorite tables": 0,
     "Most common": 0,

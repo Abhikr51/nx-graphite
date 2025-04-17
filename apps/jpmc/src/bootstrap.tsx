@@ -17,12 +17,9 @@ import "@fontsource/open-sans/800-italic.css";
 import "@fontsource/pt-mono";
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-  <>
     <BrowserRouter>
     <SaltProvider>
       <App/>
       </SaltProvider>
     </BrowserRouter>
-    
-  </>
 )

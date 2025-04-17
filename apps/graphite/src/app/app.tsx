@@ -1,17 +1,17 @@
+import { Provider } from 'react-redux';
 import '../styles.css';
+import apiInitializer from './api/apiInitializer';
 import AppHeader from "./components/AppHeader";
-import apiInitializer from "./api/apiInitializer";
 import ReferenceDataPage from "./components/ReferencetabsInfo/ReferenceDataPage";
-
-apiInitializer()
-
+import { store } from './store';
+apiInitializer();
 export function App() {
   return (
-    <div>
+    <Provider store={store}>
       <AppHeader />
       <ReferenceDataPage />
-    </div>
-  );
+    </Provider>
+  )
 }
 
 export default App;
