@@ -41,11 +41,14 @@ const ReferenceDataPage: React.FC = () => {
     "Reference data tables",
   ]);
   const [pageTitle, setPageTitle] = useState("Reference data tables");
-  const [notifications] = useState<Record<string, number>>({
+  const [notifications , setNotifications] = useState<Record<string, number>>({
     "All tables": 0,
     "Favorite tables": 0,
     "Most common": 0,
   });
+
+
+  console.log("notifications***", pageTitle)
 
   const [selectedCheckbox, setSelectedCheckbox] = useState<string>("");
   const [tabContent, setTabContent] = useState(tabs[0]); // Default to first tab
@@ -117,6 +120,7 @@ const ReferenceDataPage: React.FC = () => {
             <FilteredComponent
               filter={tabContent.value}
               checkboxValue={selectedCheckbox}
+              setNotifications={setNotifications}
             />
           </Panel>
         </TabsNext>

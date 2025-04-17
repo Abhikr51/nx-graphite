@@ -3,12 +3,18 @@ import useRefData from "../../hooks/useRefData";
 import GridHandlaer from "../../components/ReferenceItemBox/GridLayout";
 import { SALTFlexLayout } from "../../components";
 
-const ReferenceData = () => {
+interface ReferenceDataProps {
+  filter: string; // Replace 'string' with the appropriate type for 'filter'
+  setNotifications: (notifications: any) => void; // Replace 'any' with the appropriate type
+}
+
+const ReferenceData = ({ filter, setNotifications }: ReferenceDataProps) => {
   const { highCriticality, lowCriticality, mediumCriticality } = useRefData();
   const [active, setActive] = useState(true);
   const handleActiveToggle = () => {
     setActive((current: any) => !current);
   };
+  
 
   return (
     <SALTFlexLayout margin={2}>

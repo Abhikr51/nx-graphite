@@ -35,7 +35,10 @@ const useRefData = () => {
         }
     },[RefDataApi.data])
 
+    
+
     return {highCriticality , lowCriticality , mediumCriticality , loading : RefDataApi.loading}
+    
 }
 
 export default useRefData

@@ -19,7 +19,7 @@ const GridItemText = ({
         <GridItem className="lableWidth">{text}</GridItem>
         <FlowLayout>
           {isEditable && <EditIcon />}
-          {isFavourite ? <FavoriteIcon /> : <FavoriteSolidIcon />}
+          {isFavourite ? <FavoriteSolidIcon /> :  <FavoriteIcon /> }
         </FlowLayout>
       </FlowLayout>
       <Divider />
