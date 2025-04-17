@@ -36,13 +36,13 @@ const GridHandlaer = ({
         {Label}
       </NavigationItem>
       <GridLayout columns={columns} rows={rows}>
-        {data?.map((element: GridItemTextProps) => {
+        {data?.map((element: GridItemTextProps , index) => {
           return (
             <GridItemText
               text={element?.reference_table_name}
               isFavourite={element?.is_favorite}
               isEditable={element?.editable}
-              key={element?.reference_table_id}
+              key={element?.reference_table_id + index}
             />
           );
         })}

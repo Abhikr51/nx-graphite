@@ -12,10 +12,9 @@ const GridItemText = ({
   text,
   isFavourite,
   isEditable,
-  key,
 }: GridItemTextProps) => {
   return (
-    <GridItem key={key} className="itemWidth">
+    <GridItem className="itemWidth">
       <FlowLayout justify="space-between" padding={1}>
         <GridItem className="lableWidth">{text}</GridItem>
         <FlowLayout>

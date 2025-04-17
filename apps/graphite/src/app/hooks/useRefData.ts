@@ -12,7 +12,6 @@ const useRefData = () => {
         const high: RefDataType[] = [];
         const medium: RefDataType[] = [];
         const low: RefDataType[] = [];
-        console.log("RefDataApi.data2", RefDataApi.data)
         for (const table of tables) {
           switch (table.priority) {
             case 'high':
@@ -34,7 +33,7 @@ const useRefData = () => {
         if(RefDataApi.data){
             categorizeByPriority(RefDataApi?.data);
         }
-    },[RefDataApi.responseData])
+    },[RefDataApi.data])
 
     return {highCriticality , lowCriticality , mediumCriticality , loading : RefDataApi.loading}
 }

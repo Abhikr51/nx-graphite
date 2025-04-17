@@ -5,7 +5,6 @@ import apiErrorHandler from "./apiErrorHandler";
 import { ApiRequestConfig } from "./types";
 import { RootState } from "../../store";
 import { ApiActions } from "../../store/middlewareSlice";
-import type { AxiosResponse } from "axios";
 import type { ApiError } from "./types";
 
 const useApiRequest = <T>(
@@ -21,7 +20,7 @@ const useApiRequest = <T>(
   const currentState = useSelector(
     (state: RootState) => state.api[apiName]
   ) as {
-    responseData: AxiosResponse<T> | null;
+    responseData: T | null;
     loading: boolean;
     error: ApiError | null;
   } | undefined;
@@ -47,7 +46,7 @@ const useApiRequest = <T>(
         dispatch(
           ApiActions.initApiStore({
             apiName,
-            responseData: result as AxiosResponse,
+            responseData: result as T,
             loading: false,
             error: null,
           })
@@ -74,10 +73,10 @@ const useApiRequest = <T>(
   }, [middleware, load]);
 
   return {
-    data: currentState?.responseData?.data ?? null,
+    data: currentState?.responseData ?? null,
     error: currentState?.error ?? null,
     loading: currentState?.loading ?? false,
-    responseData: currentState?.responseData ?? null,
+    // responseData: currentState?.responseData ?? null,
     load,
   };
 };

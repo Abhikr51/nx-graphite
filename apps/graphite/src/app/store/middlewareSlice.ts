@@ -1,10 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { AxiosResponse } from 'axios'
 import { ApiError } from '../api/api-middleware/types';
 
 
 export type ApiDatatype<T = unknown> = {
-  responseData: AxiosResponse<T> | null;
+  responseData: T | null;
   loading: boolean;
   error: ApiError | null
 };

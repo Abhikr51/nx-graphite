@@ -80,7 +80,7 @@ class ApiMiddleware {
     url: string;
     data?: unknown;
     configs?: AxiosRequestConfig;
-  }): Promise<AxiosResponse<T>> {
+  }): Promise<T> {
     try {
       const response = await this.axiosInstance.request<T>({
         method,
@@ -88,7 +88,7 @@ class ApiMiddleware {
         data,
         ...configs,
       });
-      return response;
+      return response.data;
     } catch (error) {
       throw error;
     }
