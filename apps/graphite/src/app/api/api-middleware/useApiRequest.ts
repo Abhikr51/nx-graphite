@@ -1,25 +1,40 @@
-import { useState, useCallback, useEffect, useMemo } from "react";
+import {  useCallback, useEffect, useMemo } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import ApiMiddleware from ".";
 import apiErrorHandler from "./apiErrorHandler";
-import { ApiError, ApiRequestConfig, ApiState } from "./types";
+import { ApiRequestConfig } from "./types";
+import { RootState } from "../../store";
+import { ApiActions } from "../../store/middlewareSlice";
+import type { AxiosResponse } from "axios";
+import type { ApiError } from "./types";
 
-const useApiRequest = <T = unknown>(
+const useApiRequest = <T>(
   method: "get" | "post" | "put" | "delete",
   url: string,
+  apiName: string,
   data?: unknown,
   configs?: ApiRequestConfig
-): ApiState<T> => {
-  const [responseData, setResponseData] = useState<T | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<ApiError | null>(null);
+) => {
+  const dispatch = useDispatch();
+
+  // Optional chaining to avoid undefined crash
+  const currentState = useSelector(
+    (state: RootState) => state.api[apiName]
+  ) as {
+    responseData: AxiosResponse<T> | null;
+    loading: boolean;
+    error: ApiError | null;
+  } | undefined;
 
   const middleware = useMemo(() => new ApiMiddleware(configs?.overriddenConfig), [
     configs?.overriddenConfig,
   ]);
 
   const load = useCallback(async () => {
-    if (!responseData) setLoading(true);
-    setError(null);
+    if (!currentState) {
+      dispatch(ApiActions.setApiLoading({ apiName, loading: true }));
+    }
+
     try {
       const result = await middleware.request<T>({
         method,
@@ -27,33 +42,44 @@ const useApiRequest = <T = unknown>(
         data,
         configs: configs?.axiosConfigs,
       });
-      
-      if (JSON.stringify(result) !== JSON.stringify(responseData)) {
-        setResponseData(result);
+
+      if (JSON.stringify(result) !== JSON.stringify(currentState?.responseData)) {
+        dispatch(
+          ApiActions.initApiStore({
+            apiName,
+            responseData: result as AxiosResponse,
+            loading: false,
+            error: null,
+          })
+        );
       }
     } catch (err) {
-      setError(apiErrorHandler(err)); // ✅ Handle API errors properly
+      dispatch(ApiActions.setApiError({ apiName, error: apiErrorHandler(err) }));
     } finally {
-      setLoading(false);
+      dispatch(ApiActions.setApiLoading({ apiName, loading: false }));
     }
-  }, [method, url, data, configs, responseData, middleware]);
+  }, [method, url, data, configs, currentState, middleware, dispatch, apiName]);
 
-  //load api for first time
   useEffect(() => {
-    load()
-  },[])
+    load();
+  }, []);
 
-  //refresh
   useEffect(() => {
     const refreshInterval = middleware.mergedConfigs.refreshInterval;
     if (refreshInterval && refreshInterval > 1000) {
       const interval = setInterval(load, refreshInterval);
       return () => clearInterval(interval);
     }
-    return ()=>{}
+    return () => {};
   }, [middleware, load]);
 
-  return { data: responseData, error, loading, load };
+  return {
+    data: currentState?.responseData?.data ?? null,
+    error: currentState?.error ?? null,
+    loading: currentState?.loading ?? false,
+    responseData: currentState?.responseData ?? null,
+    load,
+  };
 };
 
 export default useApiRequest;
