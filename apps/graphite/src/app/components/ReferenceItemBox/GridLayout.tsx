@@ -37,6 +37,7 @@ const GridHandlaer = ({
       </NavigationItem>
       <GridLayout columns={columns} rows={rows}>
         {data?.map((element: GridItemTextProps) => {
+          console.log("filterData***", element)
           return (
             <GridItemText
               text={element?.reference_table_name}

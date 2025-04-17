@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import { Badge, Checkbox, Panel } from "@salt-ds/core";
 import "./ReferenceDataPage.css";
 import { StackLayout } from "@salt-ds/core";
@@ -46,6 +46,9 @@ const ReferenceDataPage: React.FC = () => {
     "Favorite tables": 0,
     "Most common": 0,
   });
+
+
+  console.log("notifications***", pageTitle)
 
   const [selectedCheckbox, setSelectedCheckbox] = useState<string>("");
   const [tabContent, setTabContent] = useState(tabs[0]); // Default to first tab
@@ -117,6 +120,7 @@ const ReferenceDataPage: React.FC = () => {
             <FilteredComponent
               filter={tabContent.value}
               checkboxValue={selectedCheckbox}
+              setNotifications={setNotifications}
             />
           </Panel>
         </TabsNext>

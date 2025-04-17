@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import Api from "../api/api-middleware/useApiMethods";
 import ApiEndpoints from "../api/ApiEndpoints";
 import { RefDataType } from "../api/ApiTypes";
+
+
 const useRefData = () => {
     const [highCriticality, setHighCriticality] = useState<RefDataType[]>([]);
     const [lowCriticality, setLowCriticality] = useState<RefDataType[]>([]);
@@ -36,7 +38,10 @@ const useRefData = () => {
         }
     },[RefDataApi.data])
 
+    
+
     return {highCriticality , lowCriticality , mediumCriticality , loading : RefDataApi.loading}
+    
 }
 
 export default useRefData
