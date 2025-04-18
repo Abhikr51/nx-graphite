@@ -41,29 +41,30 @@ import {
             onClick={() => scroll("left")}
           />
   
-  <div ref={scrollRef} className="scroll-container">
-  {timeZones.map(({ city, time, est }, index) => (
-    <div key={city} className="timezone-item">
-      <Text styleAs="label" className="city-name">{city}</Text>
-      <Text styleAs="label">↕</Text>
-      <Text
-        styleAs="label"
-        className={`city-time ${
-          city === "Singapore" || city === "Hong Kong"
-            ? "pink-time"
-            : city === "Malaysia"
-            ? "yellow-time"
-            : "green-time"
-        }`}
-      >
-        {time} {est}
-      </Text>
-      {index < timeZones.length - 1 && (
-        <Divider orientation="vertical" className="divider-style" variant="primary" />
-      )}
-    </div>
-  ))}
-</div>
+          <div ref={scrollRef} className="scroll-container">
+          {timeZones.map(({ city, time, est }, index) => (
+            <div key={city} className="timezone-item">
+              <Text styleAs="label" className="city-name">{city}</Text>
+              <Text styleAs="label">↕</Text>
+              <Text
+                styleAs="label"
+                className={`city-time ${
+                  city === "Singapore" || city === "Hong Kong"
+                    ? "pink-time"
+                    : city === "Malaysia"
+                    ? "yellow-time"
+                    : "green-time"
+                }`}
+              >
+                {time} {est}
+              </Text>
+              {index < timeZones.length - 1 && (
+                <Divider orientation="vertical" className="divider-style" variant="primary" />
+              )}
+            </div>
+          ))}
+        </div>
+
   
           <ChevronRightIcon
             className="icon-chevron icon-chevron-right"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo, useCallback } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import { Badge, Checkbox, Panel } from "@salt-ds/core";
 import "./ReferenceDataPage.css";
 import { StackLayout } from "@salt-ds/core";
@@ -23,17 +23,17 @@ const checkboxConfig = [
   { type: "nonEditable", label: "Non-Editable", notificationKey: "10" },
 ];
 
-const fetchDynamicNotifications = (): Promise<Record<string, number>> => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        "All tables": 2,
-        "Favorite tables": 4,
-        "Most common": 6,
-      });
-    }, 1000);
-  });
-};
+// const fetchDynamicNotifications = (): Promise<Record<string, number>> => {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve({
+//         "All tables": 2,
+//         "Favorite tables": 4,
+//         "Most common": 6,
+//       });
+//     }, 1000);
+//   });
+// };
 
 const ReferenceDataPage: React.FC = () => {
   const [breadcrumbs, setBreadcrumbs] = useState([
@@ -41,18 +41,21 @@ const ReferenceDataPage: React.FC = () => {
     "Reference data tables",
   ]);
   const [pageTitle, setPageTitle] = useState("Reference data tables");
-  const [notifications, setNotifications] = useState<Record<string, number>>({
+  const [notifications , setNotifications] = useState<Record<string, number>>({
     "All tables": 0,
     "Favorite tables": 0,
     "Most common": 0,
   });
 
+
+  console.log("notifications***", pageTitle)
+
   const [selectedCheckbox, setSelectedCheckbox] = useState<string>("");
   const [tabContent, setTabContent] = useState(tabs[0]); // Default to first tab
 
-  useEffect(() => {
-    fetchDynamicNotifications().then((data) => setNotifications(data));
-  }, []);
+  // useEffect(() => {
+  //   fetchDynamicNotifications().then((data) => setNotifications(data));
+  // }, []);
 
   const handleBreadcrumbClick = useCallback((item: string, index: number) => {
     const newCrumbs = breadcrumbs.slice(0, index + 1);
@@ -117,6 +120,7 @@ const ReferenceDataPage: React.FC = () => {
             <FilteredComponent
               filter={tabContent.value}
               checkboxValue={selectedCheckbox}
+              setNotifications={setNotifications}
             />
           </Panel>
         </TabsNext>

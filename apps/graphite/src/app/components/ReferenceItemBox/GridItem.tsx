@@ -12,15 +12,14 @@ const GridItemText = ({
   text,
   isFavourite,
   isEditable,
-  key,
 }: GridItemTextProps) => {
   return (
-    <GridItem key={key} className="itemWidth">
+    <GridItem className="itemWidth">
       <FlowLayout justify="space-between" padding={1}>
         <GridItem className="lableWidth">{text}</GridItem>
         <FlowLayout>
           {isEditable && <EditIcon />}
-          {isFavourite ? <FavoriteIcon /> : <FavoriteSolidIcon />}
+          {isFavourite ? <FavoriteSolidIcon /> :  <FavoriteIcon /> }
         </FlowLayout>
       </FlowLayout>
       <Divider />

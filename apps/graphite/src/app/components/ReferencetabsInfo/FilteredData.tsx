@@ -4,6 +4,7 @@ import ReferenceData from "../../pages/ReferenceData";
 type FilteredComponentProps = {
   filter: string;
   checkboxValue: string;
+  setNotifications:any;
 };
 
 const mockData = [
@@ -15,7 +16,7 @@ const mockData = [
   { type: "nonEditable", label: "Non-Editable Common", value: "common", data: "Non-Editable Common tables data" },
 ];
 
-const FilteredComponent: React.FC<FilteredComponentProps> = ({ filter, checkboxValue }) => {
+const FilteredComponent: React.FC<FilteredComponentProps> = ({ filter, checkboxValue, setNotifications }) => {
   const filteredData = useMemo(() => {
     return mockData.filter(
       (item) => item.value === filter && (!checkboxValue || item.type === checkboxValue)
@@ -28,15 +29,7 @@ const FilteredComponent: React.FC<FilteredComponentProps> = ({ filter, checkboxV
 
   return (
     <div>
-      {/* <h3>{`Filtered Data for: ${filter} (${checkboxValue})`}</h3>
-      {filteredData.map((item, index) => (
-        <div key={index}>
-          <h4>{item.label}</h4>
-          <p>{item.data}</p>
-        </div>
-      ))} */}
-      <ReferenceData />
-      
+      <ReferenceData filter={filter} setNotifications={setNotifications}/>
     </div>
   );
 };
