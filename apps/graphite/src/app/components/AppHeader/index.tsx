@@ -9,7 +9,6 @@ import {
 import "./appHeaderStyle.css";
 import { routes } from "../../constants/routes";
 import { appHeaderConstants, appHeaderFeatures } from "../../constants";
-import Menubar from "../Menubar/Menubar"
 
 const AppHeader = () => {
   const currentURL = window.location.href;
@@ -62,7 +61,7 @@ const AppHeader = () => {
           ))}
         </FlexLayout>
       </StackLayout>
-      <Menubar/>
+      
     </header>
   );
 };
